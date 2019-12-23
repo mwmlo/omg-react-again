@@ -1,0 +1,23 @@
+{
+  "name": "omg-react-again",
+  "version": "0.1.0",
+  "description": "This small Node.js project is for the Google Code-in 2019 task set by OpenMRS 'React-2: Create a server using Node.js to communicate with React App'.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mee-kell/omg-react-again.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mee-kell/omg-react-again/issues"
+  },
+  "homepage": "https://github.com/mee-kell/omg-react-again#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
