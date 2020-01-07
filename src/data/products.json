@@ -1,0 +1,88 @@
+{
+    "products": [{
+        "id" : "P001",
+        "categoryId" : "cty01",
+        "name" : "Pine Apple",
+        "unit" : "Kg",
+        "pricePerUnit" : 1.2,
+        "stocks" : 10
+      }, {
+         "id" : "D001",
+         "categoryId" : "cty01",
+         "name" : "Dragon Fruit",
+         "unit" : "Kg",
+         "pricePerUnit" : 1.4,
+         "stocks" : 12
+      }, {
+          "id" : "B001",
+          "categoryId" : "cty01",
+          "name" : "Banana",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.5,
+          "stocks" : 20
+      }, {
+          "id" : "B002",
+          "categoryId" : "cty02",
+          "name" : "Broccoli",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.9,
+          "stocks" : 10
+      }, {
+          "id" : "C002",
+          "categoryId" : "cty02",
+          "name" : "Cabbage",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.4,
+          "stocks" : 20
+      }, {
+          "id" : "P002",
+          "categoryId" : "cty02",
+          "name" : "Potato",
+          "unit" : "Kg",
+          "pricePerUnit" : 1.3,
+          "stocks" : 18
+      }, {
+          "id" : "C003",
+          "categoryId" : "cty03",
+          "name" : "Chicken",
+          "unit" : "Kg",
+          "pricePerUnit" : 2.0,
+          "stocks" : 12
+      }, {
+          "id" : "B003",
+          "categoryId" : "cty03",
+          "name" : "Beef",
+          "unit" : "Kg",
+          "pricePerUnit" : 2.5,
+          "stocks" : 10
+      }, {
+          "id" : "P003",
+          "categoryId" : "cty03",
+          "name" : "Pork",
+          "unit" : "Kg",
+          "pricePerUnit" : 2.3,
+          "stocks" : 10
+      }, {
+          "id" : "B004",
+          "categoryId" : "cty04",
+          "name" : "Bread",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.6,
+          "stocks" : 10
+      }, {
+          "id" : "R004",
+          "categoryId" : "cty04",
+          "name" : "Rice",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.4,
+          "stocks" : 15
+      }, {
+          "id" : "P004",
+          "categoryId" : "cty04",
+          "name" : "Pasta",
+          "unit" : "Kg",
+          "pricePerUnit" : 0.6,
+          "stocks" : 8
+      }
+      ]
+  }
