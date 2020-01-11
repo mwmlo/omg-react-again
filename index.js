@@ -1,55 +1,70 @@
-const express = require("express");
+const express = require('express');
 
-const PORT = 8080;
+const PORT = 8000;
 const app = express();
 
-var product = require('./src/data/products.json');
-var category = require('./src/data/categories.json');
+// Import method to get productMap, categoryMap from dataService.js file.
+const dataService = require('./dataService');
 
-app.get('/', function (req, res) {
-    res.send(" ");
+// Create a route for app.
+app.get('/', function(req, res) {
+  res.send('');
 });
 
-app.get("/info", (req, res) => {
-    var serverInfo = require('./package.json');
-    res.json({serverName : serverInfo.name, serverVersion : serverInfo.version});
+// Display server information.
+app.get('/info', (req, res) => {
+  const serverInfo = require('./package.json');
+  res.json({serverName: serverInfo.name, serverVersion: serverInfo.version});
 });
 
-app.get("/products/all", (req, res) => {
-
-    // STEP 4. Combine category and product details, then send as JSON.
-
-    var combined = Object.assign({}, category, product);
-    res.json({allProducts : combined});
+// Send products and categories combined.
+app.get('/products/all', (req, res) => {
+  const combinedDataMap = dataService.getCombinedProductMap();
+  // Convert map into JSON object for output.
+  const combinedData = Object.fromEntries(combinedDataMap);
+  res.json({combinedData});
 });
 
-app.get("/product/:id", (req,res) => {
+// Get values for which product ID is a key.
+app.get('/product/:id', (req, res) => {
+  const combinedDataMap = dataService.getCombinedProductMap();
+  const productById = combinedDataMap.get(req.params.id);
 
-    // STEP 5. Loop through products. If id matches, send product details as JSON.
+  // Safety check for if ID entered is valid.
+  if (!productById) {
+    res.status(500).json({error: 'Invalid product ID'});
+    return;
+  }
 
-    for (food in product.products) {
-        if (product.products[food].id == req.params.id) {
-            var productById = product.products[food];
-        };
-    };
-    res.json({productById});
+  // Otherwise, return product by ID.
+  res.json({productById});
+
 });
 
-app.get("/category/:ctyId", (req,res) => {
+// Get values for which category ID is a key.
+app.get('/category/:ctyId', (req, res) => {
+  const combinedDataValues = dataService.getCombinedProductMap().values();
+  const categoryById = [];
 
-    // STEP 6. Loop through products. If categoryId matches, add product to array. Send array as JSON.
+  // If a product's category ID matches the request, add it to the array.
+  for (let product of combinedDataValues) {
+    if (req.params.ctyId === product.categoryId) {
+      categoryById.push(product);
+    }
+  }
 
-    var productsInCategory = [];
-    for (food in product.products) {
-        if (product.products[food].categoryId == req.params.ctyId) {
-            productsInCategory.push(product.products[food]);
-        };
-    };
-    res.json({productsInCategory});
+  // Check if category ID entered is valid (i.e. has placed products in array).
+  if (categoryById.length === 0) {
+    res.status(500).json({error: 'Invalid category ID'});
+    return;
+  }
+
+  // Otherwise, return category by ID.
+  res.json({categoryById});
+
 });
 
-
+// Listen to requests.
 app.listen(PORT, () => {
-   console.log(`Server is listening on port: ${PORT}`);
+  console.log(`Server is listening on port: ${PORT}`);
 });
-   
